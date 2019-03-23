@@ -17,7 +17,6 @@ export default class App extends React.Component {
     };
   }
 
-  //bla
   componentDidMount() {
     const currentExampleId = reactLocalStorage.get(
       this.CURRENTEXAMPLEID,
@@ -33,25 +32,24 @@ export default class App extends React.Component {
 
   nextExample = () => {
     if (this.hasNext(this.state.currentExampleId)) {
-      this.saveCurrentExampleId(this.state.currentExampleId + 1);
+      const nextExampleId = this.state.currentExampleId + 1;
+      this.saveCurrentExampleId(nextExampleId);
     }
   };
 
   prevExample = () => {
     if (this.hasPrev(this.state.currentExampleId)) {
-      this.save(this.state.currentExampleId - 1);
+      const prevExampleId = this.state.currentExampleId - 1;
+      this.saveCurrentExampleId(prevExampleId);
     }
   };
 
   saveCurrentExampleId = exampleId => {
-    console.log(exampleId);
     const currentExampleId = Number(exampleId);
     this.setState({
       currentExampleId
     });
-    reactLocalStorage.set(this.CURRENTEXAMPLEID, currentExampleId);
-
-    console.log(reactLocalStorage.get(this.CURRENTEXAMPLEID));
+    reactLocalStorage.set(this.CURRENTEXAMPLEID, `${exampleId}`);
   };
 
   render() {
