@@ -1,4 +1,5 @@
 import React from "react";
+import { localstorage } from "reactjs-localstorage";
 
 import Header from "./Header";
 import Example from "./Example";
@@ -21,18 +22,22 @@ export default class App extends React.Component {
 
   nextExample = () => {
     if (this.hasNext(this.state.currentExampleId)) {
-      this.setState({
-        currentExampleId: this.state.currentExampleId + 1
-      });
+      this.saveCurrentExampleId(this.state.currentExampleId + 1);
     }
   };
 
   prevExample = () => {
     if (this.hasPrev(this.state.currentExampleId)) {
-      this.setState({
-        currentExampleId: this.state.currentExampleId - 1
-      });
+      this.save(this.state.currentExampleId - 1);
     }
+  };
+
+  saveCurrentExampleId = exampleId => {
+    this.setState({
+      currentExampleId: exampleId
+    });
+    //    localstorage.set("var", true);
+    //    localstorage.get("var", true);
   };
 
   render() {
