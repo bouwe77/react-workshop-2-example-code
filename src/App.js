@@ -1,5 +1,5 @@
 import React from "react";
-import { localstorage } from "reactjs-localstorage";
+import { reactLocalStorage } from "reactjs-localstorage";
 
 import Header from "./Header";
 import Example from "./Example";
@@ -9,10 +9,18 @@ export default class App extends React.Component {
     super(props);
 
     this.numberOfExamples = 10;
-    const initialExampleId = 1;
+    this.CURRENTEXAMPLEID = "currentExampleId";
+
+    let initialExampleId = reactLocalStorage.get(this.CURRENTEXAMPLEID);
     this.state = {
       currentExampleId: initialExampleId
     };
+  }
+
+  componentDidMount() {
+    // if (reactLocalStorage.hasOwnProperty(this.CURRENTEXAMPLEID)) {
+    //   this.saveCurrentExampleId(reactLocalStorage.get(this.CURRENTEXAMPLEID))
+    // }
   }
 
   hasNext = currentExampleId => currentExampleId < this.numberOfExamples;
@@ -36,8 +44,7 @@ export default class App extends React.Component {
     this.setState({
       currentExampleId: exampleId
     });
-    //    localstorage.set("var", true);
-    //    localstorage.get("var", true);
+    reactLocalStorage.set(this.CURRENTEXAMPLEID, exampleId);
   };
 
   render() {
