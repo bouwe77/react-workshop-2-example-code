@@ -9,18 +9,21 @@ export default class App extends React.Component {
     super(props);
 
     this.numberOfExamples = 10;
+    this.defaultExampleId = 1;
     this.CURRENTEXAMPLEID = "currentExampleId";
 
-    let initialExampleId = reactLocalStorage.get(this.CURRENTEXAMPLEID);
     this.state = {
-      currentExampleId: initialExampleId
+      currentExampleId: this.defaultExampleId
     };
   }
 
+  //bla
   componentDidMount() {
-    // if (reactLocalStorage.hasOwnProperty(this.CURRENTEXAMPLEID)) {
-    //   this.saveCurrentExampleId(reactLocalStorage.get(this.CURRENTEXAMPLEID))
-    // }
+    const currentExampleId = reactLocalStorage.get(
+      this.CURRENTEXAMPLEID,
+      this.defaultExampleId
+    );
+    this.saveCurrentExampleId(currentExampleId);
   }
 
   hasNext = currentExampleId => currentExampleId < this.numberOfExamples;
@@ -41,10 +44,14 @@ export default class App extends React.Component {
   };
 
   saveCurrentExampleId = exampleId => {
+    console.log(exampleId);
+    const currentExampleId = Number(exampleId);
     this.setState({
-      currentExampleId: exampleId
+      currentExampleId
     });
-    reactLocalStorage.set(this.CURRENTEXAMPLEID, exampleId);
+    reactLocalStorage.set(this.CURRENTEXAMPLEID, currentExampleId);
+
+    console.log(reactLocalStorage.get(this.CURRENTEXAMPLEID));
   };
 
   render() {
