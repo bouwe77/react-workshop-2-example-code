@@ -1,0 +1,63 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.header {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  background: #2c3e50;
+}
+
+.header span {
+  color: white;
+  margin-right: 10px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.example-nav {
+  margin-right: 10px;
+}
+
+button {
+  font-size: 18pt;
+  width: 60px;
+}
+
+.buttons {
+  margin-bottom: 10px;
+}
+
+.stack-horizontally {
+  padding: 10px;
+  width: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.tree {
+  width: 300px;
+  border: 1px solid lightgrey;
+  color: grey;
+  margin: 50px;
+}
+
+.photos {
+  width: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.photo,
+.photo-selected {
+  margin-right: 5px;
+  padding: 0;
+}
+
+.photo-selected {
+  border: 2px solid darkred;
+}
