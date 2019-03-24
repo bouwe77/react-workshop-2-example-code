@@ -1,5 +1,5 @@
 import React from "react";
-import { reactLocalStorage } from "reactjs-localstorage";
+import { getFromLocalStorage, setToLocalStorage } from "./localStorage";
 
 import Header from "./Header";
 import Example from "./Example";
@@ -18,7 +18,7 @@ export default class App extends React.Component {
   }
 
   componentDidMount() {
-    const currentExampleId = reactLocalStorage.get(
+    const currentExampleId = getFromLocalStorage(
       this.CURRENTEXAMPLEID,
       this.defaultExampleId
     );
@@ -45,11 +45,10 @@ export default class App extends React.Component {
   };
 
   saveCurrentExampleId = exampleId => {
-    const currentExampleId = Number(exampleId);
     this.setState({
-      currentExampleId
+      currentExampleId: exampleId
     });
-    reactLocalStorage.set(this.CURRENTEXAMPLEID, `${exampleId}`);
+    setToLocalStorage(this.CURRENTEXAMPLEID, exampleId);
   };
 
   render() {
