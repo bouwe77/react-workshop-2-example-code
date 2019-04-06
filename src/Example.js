@@ -10,6 +10,7 @@ import Example7 from "./[07] setState array of objects with callbacks/App";
 import Example8 from "./[08] forms/App";
 import Example9 from "./[09] api calls/App";
 import Example10 from "./[10] props.children/App";
+import Example11 from "./[11] fragments/App";
 
 const Example = props => {
   const examples = [
@@ -22,7 +23,8 @@ const Example = props => {
     Example7,
     Example8,
     Example9,
-    Example10
+    Example10,
+    Example11
   ];
 
   const index = props.currentExampleId - 1;

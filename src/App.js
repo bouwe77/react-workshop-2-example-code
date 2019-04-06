@@ -8,7 +8,7 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
 
-    this.numberOfExamples = 10;
+    this.numberOfExamples = 11;
     this.defaultExampleId = 1;
     this.CURRENTEXAMPLEID = "currentExampleId";
 
