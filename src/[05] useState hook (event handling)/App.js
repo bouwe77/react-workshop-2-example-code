@@ -5,7 +5,7 @@ function App() {
 
   function incrementCounter() {
     setCounter(counter + 1);
-    // Note: this is better: setCounter(counter => counter + 1);
+    // However, this is better: setCounter(counter => counter + 1);
     // Which is equivalent to:
     BLADIEBLA ja hiero
    }
