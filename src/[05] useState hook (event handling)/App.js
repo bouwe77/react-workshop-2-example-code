@@ -6,9 +6,12 @@ function App() {
   function incrementCounter() {
     setCounter(counter + 1);
     // However, this is better: setCounter(counter => counter + 1);
-    // Which is equivalent to:
-    BLADIEBLA ja hiero
-   }
+    // By passing in this updater function you ensure you are operating on the latest value of state
+    // Equivalent of the updater function above:
+    // function increment(counter) {
+    //   return counter + 1;
+    // }
+  }
 
   function decrementCounter() {
     setCounter(counter - 1);
