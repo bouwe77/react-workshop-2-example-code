@@ -1,41 +1,38 @@
-import React from "react";
+import React, { useState } from "react";
 
-class Form extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { description: "" };
+function Form(props) {
+  const [description, setDescription] = useState("");
+
+  function onChangeDescription(event) {
+    const textbox = event.target;
+    setDescription(textbox.value);
   }
 
-  onChangeDescription = event => {
-    this.setState({ description: event.target.value });
-  };
-
-  submitForm = event => {
+  function submitForm(event) {
     // Prevent submit reloads the page.
     event.preventDefault();
 
     // Call the addToDo callback function.
-    const description = this.state.description;
-    this.props.addToDo(description);
+    props.addToDo(description);
 
-    // Clear the input.
-    this.setState({ description: "" });
-  };
-
-  render() {
-    return (
-      <form onSubmit={this.submitForm}>
-        <input
-          type="text"
-          name="description"
-          value={this.state.description}
-          onChange={this.onChangeDescription}
-        />
-        <br />
-        <button type="submit">OK</button>
-      </form>
-    );
+    // Clear the description so the textbox is cleared.
+    setDescription("");
   }
+
+  return (
+    <form onSubmit={submitForm}>
+      <input
+        type="text"
+        name="description"
+        // The value is "read" from state: one way binding
+        value={description}
+        // Events are used to update state
+        onChange={onChangeDescription}
+      />
+      <br />
+      <button type="submit">OK</button>
+    </form>
+  );
 }
 
 export default Form;
