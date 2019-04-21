@@ -1,67 +1,62 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { getFromLocalStorage, setToLocalStorage } from "./localStorage";
 
 import Header from "./Header";
 import Example from "./Example";
 
-export default class App extends React.Component {
-  constructor(props) {
-    super(props);
+function App() {
+  const numberOfExamples = 10;
+  const defaultExampleId = 1;
+  const CURRENTEXAMPLEID = "currentExampleId";
 
-    this.numberOfExamples = 10;
-    this.defaultExampleId = 1;
-    this.CURRENTEXAMPLEID = "currentExampleId";
+  const [currentExampleId, setCurrentExampleId] = useState(defaultExampleId);
 
-    this.state = {
-      currentExampleId: this.defaultExampleId
-    };
-  }
-
-  componentDidMount() {
+  useEffect(() => {
     const currentExampleId = getFromLocalStorage(
-      this.CURRENTEXAMPLEID,
-      this.defaultExampleId
+      CURRENTEXAMPLEID,
+      defaultExampleId
     );
-    this.saveCurrentExampleId(currentExampleId);
+    saveCurrentExampleId(currentExampleId);
+  });
+
+  function hasNext(currentExampleId) {
+    return currentExampleId < numberOfExamples;
   }
 
-  hasNext = currentExampleId => currentExampleId < this.numberOfExamples;
-
-  hasPrev = currentExampleId =>
-    this.numberOfExamples > 0 && currentExampleId > 1;
-
-  nextExample = () => {
-    if (this.hasNext(this.state.currentExampleId)) {
-      const nextExampleId = this.state.currentExampleId + 1;
-      this.saveCurrentExampleId(nextExampleId);
-    }
-  };
-
-  prevExample = () => {
-    if (this.hasPrev(this.state.currentExampleId)) {
-      const prevExampleId = this.state.currentExampleId - 1;
-      this.saveCurrentExampleId(prevExampleId);
-    }
-  };
-
-  saveCurrentExampleId = exampleId => {
-    this.setState({
-      currentExampleId: exampleId
-    });
-    setToLocalStorage(this.CURRENTEXAMPLEID, exampleId);
-  };
-
-  render() {
-    return (
-      <div>
-        <Header
-          nextExample={this.nextExample}
-          prevExample={this.prevExample}
-          hasNext={this.hasNext(this.state.currentExampleId)}
-          hasPrev={this.hasPrev(this.state.currentExampleId)}
-        />
-        <Example currentExampleId={this.state.currentExampleId} />
-      </div>
-    );
+  function hasPrev(currentExampleId) {
+    return numberOfExamples > 0 && currentExampleId > 1;
   }
+
+  function nextExample() {
+    if (hasNext(currentExampleId)) {
+      const nextExampleId = currentExampleId + 1;
+      saveCurrentExampleId(nextExampleId);
+    }
+  }
+
+  function prevExample() {
+    if (hasPrev(currentExampleId)) {
+      const prevExampleId = currentExampleId - 1;
+      saveCurrentExampleId(prevExampleId);
+    }
+  }
+
+  function saveCurrentExampleId(exampleId) {
+    setCurrentExampleId(exampleId);
+    setToLocalStorage(CURRENTEXAMPLEID, exampleId);
+  }
+
+  return (
+    <div>
+      <Header
+        nextExample={nextExample}
+        prevExample={prevExample}
+        hasNext={hasNext(currentExampleId)}
+        hasPrev={hasPrev(currentExampleId)}
+      />
+      <Example currentExampleId={currentExampleId} />
+    </div>
+  );
 }
+
+export default App;
