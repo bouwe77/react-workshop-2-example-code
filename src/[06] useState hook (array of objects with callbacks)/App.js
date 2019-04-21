@@ -44,7 +44,7 @@ function App() {
 
   return (
     <div>
-      <h1>Example 7: setState for array of objects</h1>
+      <h1>Example 6: useState for array of objects</h1>
 
       <Buttons
         addPhoto={addPhoto}
