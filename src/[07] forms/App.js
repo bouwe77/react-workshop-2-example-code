@@ -1,32 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 
 import Header from "./Header";
 import Form from "./Form";
 import ToDoList from "./ToDoList";
 import TreeStructure from "./TreeStructure";
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { todos: [] };
+function App() {
+  const [todos, setTodos] = useState([]);
+
+  function addToDo(description) {
+    setTodos([...todos, { description }]);
   }
 
-  addToDo = description => {
-    this.setState({
-      todos: [...this.state.todos, { description }]
-    });
-  };
-
-  render() {
-    return (
-      <div>
-        <Header />
-        <Form addToDo={this.addToDo} />
-        <ToDoList todos={this.state.todos} />
-        <TreeStructure />
-      </div>
-    );
-  }
+  return (
+    <div>
+      <Header />
+      <Form addToDo={addToDo} />
+      <ToDoList todos={todos} />
+      <TreeStructure />
+    </div>
+  );
 }
 
 export default App;
