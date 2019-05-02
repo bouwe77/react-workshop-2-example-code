@@ -9,7 +9,7 @@ function Form(props) {
   }
 
   function submitForm(event) {
-    // Prevent submit reloads the page.
+    // Prevent that a submit reloads the page.
     event.preventDefault();
 
     // Call the addToDo callback function.
@@ -24,7 +24,7 @@ function Form(props) {
       <input
         type="text"
         name="description"
-        // The value is "read" from state: one way binding
+        // The value is "read" from state: one way data binding
         value={description}
         // Events are used to update state
         onChange={onChangeDescription}
