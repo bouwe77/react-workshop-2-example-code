@@ -12,7 +12,7 @@ function Form(props) {
     // Prevent that a submit reloads the page.
     event.preventDefault();
 
-    // Call the addToDo callback function.
+    // Call the addToDo callback function from props.
     props.addToDo(description);
 
     // Clear the description so the textbox is cleared.

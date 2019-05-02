@@ -9,7 +9,7 @@ import Example6 from "./[06] useState hook (array of objects with callbacks)/App
 import Example7 from "./[07] forms/App";
 import Example8 from "./[08] api calls/App";
 import Example9 from "./[09] props.children/App";
-import Example10 from "./[10] fragments/App";
+import Example10 from "./[10] jsx avoid surrounding parent element/App";
 
 const Example = props => {
   const examples = [

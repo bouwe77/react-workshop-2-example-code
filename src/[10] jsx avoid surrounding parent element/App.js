@@ -1,4 +1,4 @@
-// These examples avoid rendering unnecessary HTML because in JSX requires a surrounding element.
+// These examples show ways to avoid using a surrounding parent element.
 import React from "react";
 
 const Child = props => <div>{props.text}</div>;
