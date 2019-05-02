@@ -7,7 +7,8 @@ function App() {
   const [counter, setCounter] = useState(0);
 
   // This is equivalent to:
-  //var counterState = useState(0)
+  //const initialCounterValue = 0;
+  //var counterState = useState(initialCounterValue)
   //const counter = counterState[0]
   //const setCounter = counterState[1]
 
