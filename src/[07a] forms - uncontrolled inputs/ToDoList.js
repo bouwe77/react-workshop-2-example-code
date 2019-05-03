@@ -2,8 +2,8 @@ import React from "react";
 
 const ToDoList = ({ todos }) => (
   <ul>
-    {todos.map(todo => (
-      <li>{todo.description}</li>
+    {todos.map((todo, index) => (
+      <li key={index}>{todo.description}</li>
     ))}
   </ul>
 );

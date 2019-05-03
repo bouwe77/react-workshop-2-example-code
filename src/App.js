@@ -5,7 +5,7 @@ import Header from "./Header";
 import Example from "./Example";
 
 function App() {
-  const numberOfExamples = 10;
+  const numberOfExamples = 11;
   const defaultExampleId = 1;
   const CURRENTEXAMPLEID = "currentExampleId";
 
