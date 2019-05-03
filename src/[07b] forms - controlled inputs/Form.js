@@ -12,7 +12,7 @@ function Form(props) {
     // Prevent that a submit reloads the page.
     event.preventDefault();
 
-    // Call the addToDo callback function from props.
+    // Call the addToDo callback function from props and supply the entered description.
     props.addToDo(description);
 
     // Clear the description so the textbox is cleared.
@@ -23,7 +23,6 @@ function Form(props) {
     <form onSubmit={submitForm}>
       <input
         type="text"
-        name="description"
         // The value is "read" from state: one way data binding
         value={description}
         // Events are used to update state
