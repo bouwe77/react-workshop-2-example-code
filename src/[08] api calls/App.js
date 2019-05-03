@@ -54,8 +54,13 @@ function App() {
     axios.post(url, newToDo).catch(error => {
       // The API call failed, so rollback to the previous state.
       setTodos(previousTodos);
-      setError(error);
+      handleError(error);
     });
+  }
+
+  function handleError(error) {
+    console.log(error, error.request, error.response, error.config);
+    setError(error);
   }
 
   if (error) {
