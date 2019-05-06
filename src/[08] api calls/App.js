@@ -13,9 +13,12 @@ function App() {
 
   const url = "https://nitwit-api.azurewebsites.net/todos";
 
-  useEffect(() => {
-    getToDos();
-  });
+  // The useEffect hook runs after each render.
+  // First, you pass in the function that must be called after a render.
+  // Second, you pass in on which variables this useEffect depends on.
+  // These variables, can be one or more of the following:
+  // props, state, setters etc.
+  useEffect(getToDos, [setTodos]);
 
   // getToDo fetches ToDos from the API and updates the state.
   function getToDos() {

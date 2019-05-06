@@ -13,6 +13,7 @@ import Example9 from "./[09] props.children/App";
 import Example10 from "./[10] jsx avoid surrounding parent element/App";
 import Example11 from "./[11] import-export/App";
 import Example12 from "./[12] class components/App";
+import Example13 from "./[13] useEffect/App";
 
 const Example = props => {
   const examples = [
@@ -28,7 +29,8 @@ const Example = props => {
     Example9,
     Example10,
     Example11,
-    Example12
+    Example12,
+    Example13
   ];
 
   const index = props.currentExampleId - 1;
