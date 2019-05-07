@@ -12,7 +12,8 @@ function App() {
   // This effect function is called when the component is mounted. We do this by passing an empty array.
   useEffect(whenMounting, []);
 
-  // This effect function is called when the component is mounted. We do this by passing an empty array.
+  // This effect function is called when the component is mounting and unmounting. We do this by passing an empty array.
+  // An example where you would use this is starting and cleaning up a timer.
   useEffect(whenMountingAndUnmounting, []);
 
   function afterEachRender() {
