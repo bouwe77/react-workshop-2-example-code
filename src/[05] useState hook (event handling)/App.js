@@ -5,6 +5,7 @@ function App() {
 
   function incrementCounter() {
     setCounter(counter + 1);
+
     // However, this is better: setCounter(prevCounter => prevCounter + 1);
     // This is because the value depends on the previousValue from state.
     // By passing in this updater function you ensure you are operating on the latest value of state.

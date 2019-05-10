@@ -4,13 +4,12 @@ function App() {
   // Declare a new state variable with default value 0.
   // useState returns an array containing the "counter" value from state
   // and the "setCounter" function you can use to update the state.
-  const [counter, setCounter] = useState(0);
+  const initialCounterValue = 0;
+  var counterState = useState(initialCounterValue);
+  const counter = counterState[0];
+  const setCounter = counterState[1];
 
-  // This is equivalent to:
-  //const initialCounterValue = 0;
-  //var counterState = useState(initialCounterValue)
-  //const counter = counterState[0]
-  //const setCounter = counterState[1]
+  //  const [counter, setCounter] = useState(0);
 
   return (
     <div>
